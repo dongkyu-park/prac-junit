@@ -18,8 +18,10 @@ import java.util.function.Supplier;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class) // 메서드, 클래스 모두 명시 가능. 클래스에 명시 하면, 클래스 내 모든 메서드의 displayName이 설정됨
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) // Order 어노테이션을 사용하여 순서를 정의해주겠다. 명시
 class StudyTest {
 
+    @Order(2)
     @Test
     @DisplayName("스터디 만들기 assertAll😀")
     void create_new_study() {
@@ -43,6 +45,7 @@ class StudyTest {
 
     }
 
+    @Order(1)
     @Test
     @DisplayName("스터디 만들기 assertThrows😀")
     void create_new_study2() {
@@ -53,6 +56,7 @@ class StudyTest {
 
     }
 
+    @Order(3)
     @Test
     @DisplayName("스터디 만들기 assertTimeout😀")
     void create_new_study3() {
@@ -71,6 +75,7 @@ class StudyTest {
 
     }
 
+    @Order(4)
     @DisplayName("스터디 만들기 @RepeatedTest😀")
     @RepeatedTest(value = 10, name = "{currentRepetition}/{totalRepetitions} {displayName}")
     void repeatTest(RepetitionInfo repetitionInfo) {
